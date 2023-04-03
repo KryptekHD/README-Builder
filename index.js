@@ -30,14 +30,28 @@ const questions = [
         name:'credits'
     },
     {
-        type:'input',
-        message:'please select the licenses you used',
-        name:'license'
+        type: 'checkbox',
+        message: 'chose the licenses you used ',
+        name: 'licenses',
+        choices: [
+            'Apache License 2.0',
+            'GNU General Public License v3.0',
+            'MIT License',
+            'BSD 2-Clause "Simplified" License',
+            'BSD 3-Clause "New" or "Revised" License',
+            'Boost Software License 1.0',
+            'Creative Commons Zero v1.0 Universal',
+           'Eclipse Public License 2.0',
+            'GNU Affero General Public License v3.0',
+            'GNU General Public License v2.0',
+            'GNU Lesser General Public License v2.1',
+            'Mozilla Public License 2.0',
+            'The Unlicense']
     },
     {
         type:'input',
-        message:'how can people contribiye to this work?',
-        name:'how to crontribute'
+        message:'how can people contribitue to this work?',
+        name:'contribute'
     },
     {
         type:'input',
@@ -52,28 +66,29 @@ function writeToFile(fileName, data) {
 .prompt(questions)
 
 .then((response)=>
-fs.writeFile('README.md',`# ${JSON.stringify(response.name,null,'\t')}
+//console.log(response)
+fs.writeFile('NEWREADME.md',`# ${JSON.stringify(response.title,null,'\t')}
 
 ## Description
-${JSON.stringify(response.name,null,'\t')}
+${JSON.stringify(response.description,null,'\t')}
 
 ## Installation
-
+${JSON.stringify(response.Installation,null,'\t')}
 ## Usage
-
+${JSON.stringify(response.usage,null,'\t')}
 ## Credits
-
+${JSON.stringify(response.credits,null,'\t')}
 
 ## License
-
-
+${JSON.stringify(response.license,null,'\t')}
 ## How to Contribute
-
+${JSON.stringify(response.contribute,null,'\t')}
 
 
 ## Tests
-
-`,(err)=>
+${JSON.stringify(response.test,null,'\t')}
+`
+,(err)=>
 err ? console.error(err) : console.log("all done")
 ));
 }
