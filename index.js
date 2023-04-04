@@ -15,6 +15,16 @@ const questions = [
         name:'description'
     },
     {
+        type: 'input',
+        message:'please enter your gitHub username ',
+        name:'github'
+    },
+    {
+        type: 'input',
+        message:'please enter your email ',
+        name:'email'
+    },
+    {
         type:'input',
         message:'please write out a installation instruction',
         name:'Installation'
@@ -41,7 +51,7 @@ const questions = [
             'BSD 3-Clause "New" or "Revised" License',
             'Boost Software License 1.0',
             'Creative Commons Zero v1.0 Universal',
-           'Eclipse Public License 2.0',
+            'Eclipse Public License 2.0',
             'GNU Affero General Public License v3.0',
             'GNU General Public License v2.0',
             'GNU Lesser General Public License v2.1',
@@ -72,6 +82,11 @@ fs.writeFile('NEWREADME.md',`# ${JSON.stringify(response.title,null,'\t')}
 ## Description
 ${JSON.stringify(response.description,null,'\t')}
 
+##Questions 
+
+https://api.github.com/users/${response.github}
+[Email](${response.email})
+
 ## Installation
 ${JSON.stringify(response.Installation,null,'\t')}
 ## Usage
@@ -79,8 +94,9 @@ ${JSON.stringify(response.usage,null,'\t')}
 ## Credits
 ${JSON.stringify(response.credits,null,'\t')}
 
-## License
-${JSON.stringify(response.license,null,'\t')}
+ ## License
+ ${JSON.stringify(response.license,null,'\t')}
+
 ## How to Contribute
 ${JSON.stringify(response.contribute,null,'\t')}
 
